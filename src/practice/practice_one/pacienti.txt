@@ -1,0 +1,6 @@
+7,CATALIN ROSENTHAL,Cardiologie
+8,DUMITRU PETROSANU,Chirurgie
+6,IONUT RUSSI,Cardiologie
+3,ANCA GEFRA,Chirurgie
+2,ZAMFIRICA ARPICI,Cardiologie
+1,CORNELIA SZEGEDI,Neonatologie
