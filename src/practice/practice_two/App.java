@@ -1,9 +1,5 @@
 package practice.practice_two;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
