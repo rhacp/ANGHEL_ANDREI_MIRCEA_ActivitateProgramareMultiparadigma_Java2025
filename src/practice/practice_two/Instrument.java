@@ -57,12 +57,12 @@ public class Instrument implements Evaluabil{
 
         sb.append("{\n");
         sb.append("    \"Symbol\": \"" + symbol); sb.append(separator);
-        sb.append("    \"Operatiuni\": {\n");
+        sb.append("    \"Operatiuni\": [\n");
         for (Operatiune operatiune : operatiuni) {
             sb.append(operatiune.toString() + ",\n");
         }
         sb.delete(sb.length() - 2, sb.length() - 1);
-        sb.append("    }\n}");
+        sb.append("    ]\n}");
 
         return sb.toString();
     }

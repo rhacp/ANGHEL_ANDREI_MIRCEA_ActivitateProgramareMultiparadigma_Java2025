@@ -1,9 +1,13 @@
 package practice.practice_two;
 
+import javax.swing.text.DateFormatter;
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class PortofoliuGenerics<T> {
 
@@ -75,7 +79,7 @@ public class PortofoliuGenerics<T> {
         StringBuilder sb = new StringBuilder();
         String separator = ",\n";
 
-        sb.append("{\n");
+        sb.append("[\n");
         for (T instrument : portofoliu) {
             sb.append(instrument.toString()).append(separator);
         }
@@ -84,7 +88,7 @@ public class PortofoliuGenerics<T> {
 
         String result = sb.toString().replaceAll("\n", "\n    ");
         result = result.substring(0, result.length() - 4);
-        result += "}";
+        result += "]";
 
         return result;
     }
@@ -106,5 +110,105 @@ public class PortofoliuGenerics<T> {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static PortofoliuGenerics<Instrument> incarcarePortofoliu(String caleFisier) {
+        PortofoliuGenerics<Instrument> poftofoliuDeReturnat = new PortofoliuGenerics<>();
+        String helper = "";
+
+        File file = new File(caleFisier);
+        try (Scanner sc = new Scanner(file)) {
+            while (sc.hasNext()) {
+                helper += sc.nextLine();
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        helper = helper.replaceAll("\\s+","");
+        System.out.println(helper);
+        int counterOne = 0;
+        int counterTwo = 0;
+        int helperOne = 0;
+        int helperTwo = 0;
+        int counterr = 0;
+
+        String symbol = "";
+        String tip = "";
+        String data = "";
+        double price = 0;
+        int cantitate = 0;
+        double procentDividente = 0;
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.M.d");
+        ArrayList<Instrument.Operatiune> listaOperatiuni = new ArrayList<Instrument.Operatiune>();
+
+        for (int i = 3; i < helper.length() - 1; i++) {
+
+            if (helper.charAt(i) == ':') {
+                counterOne = i + 2;
+                helperOne = 1;
+            }
+
+            if (helper.charAt(i) == ',' || helper.charAt(i) == '}') {
+                counterTwo = i - 1;
+                helperTwo = 1;
+            }
+
+            if (helperOne == 1 && helperTwo == 1) {
+                switch (counterr) {
+                    case 0 -> symbol = helper.substring(counterOne, counterTwo);
+                    case 1 -> tip = helper.substring(counterOne, counterTwo);
+                    case 2 -> data = helper.substring(counterOne, counterTwo);
+                    case 3 -> price = Double.parseDouble(helper.substring(counterOne, counterTwo));
+                    case 4 -> cantitate = Integer.parseInt(helper.substring(counterOne, counterTwo));
+                    case 5 -> procentDividente = Double.parseDouble(helper.substring(counterOne, counterTwo));
+                }
+                counterr++;
+                helperOne = 0;
+                helperTwo = 0;
+            }
+
+            if ((helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == '\"') || (helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == ']' && helper.charAt(i - 3) == '}') || (helper.charAt(i) == ',' && helper.charAt(i - 1) == ']' && helper.charAt(i - 2) == '}' && helper.charAt(i - 3) == '\"')) {
+                TipOperatiune tipOperatiune = null;
+                if (tip.equals("VANZARE")) {
+                    tipOperatiune = TipOperatiune.VANZARE;
+                } else if (tip.equals("CUMPARARE")) {
+                    tipOperatiune = TipOperatiune.CUMPARARE;
+                }
+
+                Instrument.Operatiune operatiune = new Instrument.Operatiune(tipOperatiune, LocalDate.parse(data, dateTimeFormatter), price, cantitate);
+
+                tip = "";
+                data = "";
+                price = 0;
+                cantitate = 0;
+
+                listaOperatiuni.add(operatiune);
+
+                if (helper.charAt(i + 1) != '\"') {
+                    counterr = 1;
+                }
+                helperTwo = 0;
+            }
+
+            if ((helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == ']') || i == helper.length() - 2) {
+                if (procentDividente != 0) {
+                    Actiune actiune = new Actiune(symbol, listaOperatiuni, procentDividente);
+                    poftofoliuDeReturnat.adaugaInstrument(actiune);
+                } else {
+                    Instrument instrument = new Instrument(symbol, listaOperatiuni);
+                    poftofoliuDeReturnat.adaugaInstrument(instrument);
+                }
+
+                listaOperatiuni = new ArrayList<Instrument.Operatiune>();
+                counterr = 0;
+
+                symbol = "";
+                procentDividente = 0;
+            }
+        }
+
+        return poftofoliuDeReturnat;
     }
 }

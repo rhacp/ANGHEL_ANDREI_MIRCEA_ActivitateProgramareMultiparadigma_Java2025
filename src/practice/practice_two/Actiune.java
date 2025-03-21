@@ -51,12 +51,12 @@ public class Actiune extends Instrument implements Evaluabil {
 
         sb.append("{\n");
         sb.append("    \"Symbol\": \"" + this.getSymbol()); sb.append(separator);
-        sb.append("    \"Operatiuni\": {\n");
+        sb.append("    \"Operatiuni\": [\n");
         for (Operatiune operatiune : this.getOperatiuni()) {
             sb.append(operatiune.toString() + ",\n");
         }
         sb.delete(sb.length() - 2, sb.length() - 1);
-        sb.append("    },\n");
+        sb.append("    ],\n");
         sb.append("    \"procentDividente\": \"" + this.procentDividend + "\"");
         sb.append("\n}");
 

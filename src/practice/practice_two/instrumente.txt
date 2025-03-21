@@ -1,7 +1,7 @@
-{
+[
     {
         "Symbol": "A",
-        "Operatiuni": {
+        "Operatiuni": [
             {
                 "Tip": "VANZARE",
                 "Data": "2021.1.7",
@@ -14,24 +14,24 @@
                 "Pret": "490.99",
                 "Cantitate": "7"
             }
-        }
+        ]
     },
     {
         "Symbol": "B",
-        "Operatiuni": {
+        "Operatiuni": [
             {
                 "Tip": "VANZARE",
                 "Data": "2021.1.7",
-                "Pret": "390.99",
+                "Pret": "570.99",
                 "Cantitate": "5"
             },
             {
                 "Tip": "CUMPARARE",
                 "Data": "2025.3.21",
-                "Pret": "490.99",
+                "Pret": "199.99",
                 "Cantitate": "7"
             }
-        },
+        ],
         "procentDividente": "10.0"
     }
-}
+]
