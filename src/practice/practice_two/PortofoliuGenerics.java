@@ -92,7 +92,7 @@ public class PortofoliuGenerics<T> {
         return result;
     }
 
-    public static void salvarePortofoliu(String caleFisier, PortofoliuGenerics portofoliuGenerics) {
+    public static void salvarePortofoliuJSON(String caleFisier, PortofoliuGenerics portofoliuGenerics) {
         String toSave = portofoliuGenerics.toString();
 
 //        try {
@@ -111,7 +111,7 @@ public class PortofoliuGenerics<T> {
         }
     }
 
-    public static PortofoliuGenerics<Instrument> incarcarePortofoliu(String caleFisier) {
+    public static PortofoliuGenerics<Instrument> incarcarePortofoliuJSON(String caleFisier) {
         PortofoliuGenerics<Instrument> poftofoliuDeReturnat = new PortofoliuGenerics<>();
         String helper = "";
 

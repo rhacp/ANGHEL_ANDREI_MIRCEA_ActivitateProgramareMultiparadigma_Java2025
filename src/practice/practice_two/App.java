@@ -49,13 +49,13 @@ public class App {
         System.out.println("\n\n-----------------------------------------------\n\n");
 
         System.out.println("Write file in \"insturrmente.txt\".");
-        PortofoliuGenerics.salvarePortofoliu("src/practice/practice_two/instrumenteWrite.txt", portofoliuGenerics);
+        PortofoliuGenerics.salvarePortofoliuJSON("src/practice/practice_two/instrumenteWrite.txt", portofoliuGenerics);
 
         System.out.println("\n\n-----------------------------------------------\n\n");
 
         System.out.println("Read portofolio from file: \n");
 
-        PortofoliuGenerics<Instrument> newPortofoliu = PortofoliuGenerics.incarcarePortofoliu("src/practice/practice_two/instrumente.txt");
+        PortofoliuGenerics<Instrument> newPortofoliu = PortofoliuGenerics.incarcarePortofoliuJSON("src/practice/practice_two/instrumente.txt");
         System.out.println(newPortofoliu.toString());
     }
 }
