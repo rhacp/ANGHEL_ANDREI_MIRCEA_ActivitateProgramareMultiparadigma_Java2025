@@ -33,5 +33,40 @@
             }
         ],
         "procentDividente": "10.0"
+    },
+    {
+        "Symbol": "C",
+        "Operatiuni": [
+            {
+                "Tip": "CUMPARARE",
+                "Data": "2021.1.7",
+                "Pret": "570.99",
+                "Cantitate": "5"
+            },
+            {
+                "Tip": "CUMPARARE",
+                "Data": "2025.3.21",
+                "Pret": "199.99",
+                "Cantitate": "7"
+            }
+        ],
+        "procentDividente": "10.0"
+    },
+    {
+        "Symbol": "D",
+        "Operatiuni": [
+            {
+                "Tip": "VANZARE",
+                "Data": "2021.1.7",
+                "Pret": "990.99",
+                "Cantitate": "5"
+            },
+            {
+                "Tip": "CUMPARARE",
+                "Data": "2025.3.21",
+                "Pret": "490.99",
+                "Cantitate": "7"
+            }
+        ]
     }
 ]

@@ -53,7 +53,7 @@ public class App {
         System.out.println("\n\n-----------------------------------------------\n\n");
 
         System.out.println("Write file in \"insturrmente.txt\".");
-//        PortofoliuGenerics.salvarePortofoliu("src/practice/practice_two/instrumente.txt", portofoliuGenerics);
+        PortofoliuGenerics.salvarePortofoliu("src/practice/practice_two/instrumenteWrite.txt", portofoliuGenerics);
 
         System.out.println("\n\n-----------------------------------------------\n\n");
 
