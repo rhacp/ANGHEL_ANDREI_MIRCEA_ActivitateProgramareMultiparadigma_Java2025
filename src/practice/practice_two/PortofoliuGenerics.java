@@ -168,7 +168,10 @@ public class PortofoliuGenerics<T> {
                 helperTwo = 0;
             }
 
-            if ((helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == '\"' && data != "") || (helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == ']' && helper.charAt(i - 3) == '}') || (helper.charAt(i) == ',' && helper.charAt(i - 1) == ']' && helper.charAt(i - 2) == '}' && helper.charAt(i - 3) == '\"') || (helper.charAt(i) == '}' && helper.charAt(i - 1) == ']' && helper.charAt(i - 2) == '}' && helper.charAt(i + 1) == ']')) {
+            if ((helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == '\"' && data != "")
+                    || (helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == ']' && helper.charAt(i - 3) == '}')
+                    || (helper.charAt(i) == ',' && helper.charAt(i - 1) == ']' && helper.charAt(i - 2) == '}' && helper.charAt(i - 3) == '\"')
+                    || (helper.charAt(i) == '}' && helper.charAt(i - 1) == ']' && helper.charAt(i - 2) == '}' && helper.charAt(i + 1) == ']')) {
                 TipOperatiune tipOperatiune = null;
                 if (tip.equals("VANZARE")) {
                     tipOperatiune = TipOperatiune.VANZARE;
@@ -191,7 +194,9 @@ public class PortofoliuGenerics<T> {
                 helperTwo = 0;
             }
 
-            if ((helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == ']') || (i == helper.length() - 2) || (helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == '\"' && procentDividente != 0)) {
+            if ((helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == ']')
+                    || (i == helper.length() - 2)
+                    || (helper.charAt(i) == ',' && helper.charAt(i - 1) == '}' && helper.charAt(i - 2) == '\"' && procentDividente != 0)) {
                 if (procentDividente != 0) {
                     Actiune actiune = new Actiune(symbol, listaOperatiuni, procentDividente);
                     poftofoliuDeReturnat.adaugaInstrument(actiune);
